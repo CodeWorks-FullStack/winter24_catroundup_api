@@ -3,7 +3,7 @@ import { valuesService } from '../services/ValuesService.js'
 import BaseController from '../utils/BaseController'
 
 export class ValuesController extends BaseController {
-  constructor() {
+  constructor () {
     super('api/values')
     this.router
       .get('', this.getAll)

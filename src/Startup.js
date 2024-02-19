@@ -17,7 +17,8 @@ export class Startup {
       crossOriginResourcePolicy: { policy: 'cross-origin' }
     }))
     app.use(json({ limit: '50mb' }))
-    Startup.UseAuth()
+    // TODO comment this out today! No auth
+    // Startup.UseAuth()
   }
 
   static UseAuth() {
