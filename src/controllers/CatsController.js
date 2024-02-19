@@ -6,11 +6,13 @@ import BaseController from "../utils/BaseController.js";
 // NOTE inheriting all members from BaseController (properties and methods)
 export class CatsController extends BaseController {
   constructor () {
-    // NOTE calls the constructor on BaseController
+    // NOTE super calls the constructor on BaseController. We provide an argument that the BaseController uses to set up a new API endpoint
     // NOTE label on door in hallway. allows us to send requests to http:localhost:3000/api/cats
     super('api/cats')
+
     // NOTE the express router allows us to set up code to run when requests are sent to this endpoint
     this.router
+
       // NOTE if you send a get request to http:localhost:3000/api/cats, we run our callback function this.getCats, which is a method on this CatsCOntroller class
       .get('', this.getCats)
 
@@ -19,6 +21,7 @@ export class CatsController extends BaseController {
 
       // NOTE post request to http://localhost:3000/api/cats triggers this.createCat to run
       .post('', this.createCat)
+
       // NOTE delete request to http://localhost:3000/api/cats/3 triggers this.destroyCat to run, and we can target 3 by drilling into the request parameters object
       .delete('/:catId', this.destroyCat)
   }
@@ -84,7 +87,7 @@ export class CatsController extends BaseController {
    */
   destroyCat(request, response, next) {
     try {
-      // NOTE http:localhost:3000/api/cats/79 -> catId value is 79
+      // NOTE GET http:localhost:3000/api/cats/79 -> catId value is 79
       const catId = request.params.catId
       const message = catsService.destroyCat(catId)
       response.send(message)
