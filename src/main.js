@@ -22,7 +22,8 @@ Startup.ConfigureRoutes(app)
 socketProvider.initialize(httpServer)
 
 // Connect to Atlas MongoDB
-DbConnection.connect()
+// TODO comment this out today, we are not connecting to a database (yet)
+// DbConnection.connect()
 
 // Start Server
 httpServer.listen(port, () => {
