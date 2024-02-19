@@ -1,3 +1,4 @@
+import { catsService } from "../services/CatsService.js";
 import BaseController from "../utils/BaseController.js";
 
 // NOTE inheriting all members from BaseController (properties and methods)
@@ -17,6 +18,11 @@ export class CatsController extends BaseController {
    * @param {import("express").NextFunction} next
    */
   getCats(request, response, next) {
-    response.send('This is the cats door, welcome')
+    try {
+      const cats = catsService.getCats()
+      response.send(cats)
+    } catch (error) {
+      next(error)
+    }
   }
 }
