@@ -1,3 +1,4 @@
+import { fakeDb } from "../db/FakeDb.js";
 import { catsService } from "../services/CatsService.js";
 import BaseController from "../utils/BaseController.js";
 
@@ -12,6 +13,7 @@ export class CatsController extends BaseController {
       .get('', this.getCats)
       .get('/:catId', this.getCatById)
       .post('', this.createCat)
+      .delete('/:catId', this.destroyCat)
   }
 
 
@@ -54,6 +56,21 @@ export class CatsController extends BaseController {
       const catData = request.body
       const cat = catsService.createCat(catData)
       response.send(cat)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  /**
+   * @param {import("express").Request} request
+   * @param {import("express").Response} response
+   * @param {import("express").NextFunction} next
+   */
+  destroyCat(request, response, next) {
+    try {
+      const catId = request.params.catId
+      const message = catsService.destroyCat(catId)
+      response.send(message)
     } catch (error) {
       next(error)
     }
