@@ -7,16 +7,16 @@ import BaseController from "../utils/BaseController.js";
 export class CatsController extends BaseController {
   constructor () {
     // NOTE super calls the constructor on BaseController. We provide an argument that the BaseController uses to set up a new API endpoint
-    // NOTE label on door in hallway. allows us to send requests to http:localhost:3000/api/cats
+    // NOTE label on door in hallway. allows us to send requests to http://localhost:3000/api/cats
     super('api/cats')
 
-    // NOTE the express router allows us to set up code to run when requests are sent to this endpoint
+    // NOTE the express router allows us to set up code to run when HTTP requests are sent to this endpoint
     this.router
 
-      // NOTE if you send a get request to http:localhost:3000/api/cats, we run our callback function this.getCats, which is a method on this CatsCOntroller class
+      // NOTE if you send a get request to http://localhost:3000/api/cats, we run our callback function this.getCats, which is a method on this CatsController class
       .get('', this.getCats)
 
-      // NOTE a colon after a slash denotes that this a variable we can target from the request parameters. If a get request is sent to http://localhost:3000/api/cats/2, we can target the '2' from the URL by drilling into request.parameters.catId
+      // NOTE a colon after a slash denotes that this a variable we can target from the request parameters. If a get request is sent to http://localhost:3000/api/cats/2, we can target the '2' from the URL by drilling into request.params.catId
       .get('/:catId', this.getCatById)
 
       // NOTE post request to http://localhost:3000/api/cats triggers this.createCat to run
