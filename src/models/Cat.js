@@ -5,8 +5,8 @@ export class Cat {
     this.id = data.id
     this.name = data.name
     this.age = data.age
-    this.hasTail = data.hasTail
-    this.eatsCheese = data.eatsCheese
-    this.temperament = data.temperament
+    this.hasTail = data.hasTail || true
+    this.eatsCheese = data.eatsCheese || true
+    this.temperament = data.temperament || 'lazy'
   }
 }

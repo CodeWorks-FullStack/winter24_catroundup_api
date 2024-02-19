@@ -11,6 +11,7 @@ export class CatsController extends BaseController {
     this.router
       .get('', this.getCats)
       .get('/:catId', this.getCatById)
+      .post('', this.createCat)
   }
 
 
@@ -37,6 +38,21 @@ export class CatsController extends BaseController {
     try {
       const catId = request.params.catId
       const cat = catsService.getCatById(catId)
+      response.send(cat)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  /**
+   * @param {import("express").Request} request
+   * @param {import("express").Response} response
+   * @param {import("express").NextFunction} next
+   */
+  createCat(request, response, next) {
+    try {
+      const catData = request.body
+      const cat = catsService.createCat(catData)
       response.send(cat)
     } catch (error) {
       next(error)
