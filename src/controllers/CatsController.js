@@ -1,4 +1,3 @@
-import { fakeDb } from "../db/FakeDb.js";
 import { catsService } from "../services/CatsService.js";
 import BaseController from "../utils/BaseController.js";
 
