@@ -40,6 +40,7 @@ export class CatsController extends BaseController {
     try {
       // NOTE the cats variable is assigned a value by the return in the service
       const cats = catsService.getCats()
+      // NOTE send HTTP response to client, cats value becomes the response body
       response.send(cats)
     } catch (error) {
       next(error)
