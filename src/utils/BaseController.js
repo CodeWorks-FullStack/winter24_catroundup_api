@@ -1,7 +1,7 @@
 import express from 'express'
 
 export default class BaseController {
-  constructor(mount) {
+  constructor (mount) {
     if (typeof mount !== 'string') {
       throw new Error('Unable to register controller no mount path specified')
     }
