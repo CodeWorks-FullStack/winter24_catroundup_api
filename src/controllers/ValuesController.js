@@ -22,7 +22,7 @@ export class ValuesController extends BaseController {
    */
   async getAll(request, response, next) {
     try {
-      response.send(['value1', 'value2'])
+      response.send(['value1', 'value2', 'value3'])
     } catch (error) {
       next(error)
     }
